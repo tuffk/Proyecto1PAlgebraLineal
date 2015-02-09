@@ -48,7 +48,7 @@ void empaquetamela(vector<vector<int>>& p, vector<char> vagina)
 			}
 			else
 			{
-				continue;
+				x = 32;
 			}
 			
 

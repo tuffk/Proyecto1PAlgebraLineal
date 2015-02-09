@@ -1,4 +1,4 @@
-﻿Compilación iniciada a las 08/02/2015 07:45:21 p.m..
+﻿Compilación iniciada a las 08/02/2015 07:48:22 p.m..
      1>Proyecto "C:\Users\Jaime\Documents\GitHub\Proyecto1PAlgebraLineal\try1-AL1P\try1-AL1P\try1-AL1P.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
@@ -11,4 +11,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:00.89
+Tiempo transcurrido 00:00:01.11
