@@ -12,12 +12,15 @@ vector<char> ABC{ 'a', 'b','c','d','e','f', 'g','h','i','j','k','l','m','n','ñ',
 //char ABC[28] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ' };
 /*
 	28 caracteres en el ABC
-
+	con char de ascii son a = 97 - z= 122
+	25 letras
+	con ascii seria mod 128
 */
 
-void multKcolum(vector<vector<int>> mat, vector<int>&col)
+
+void multKcolum(vector<vector<double>> mat, vector<double>&col)
 {
-	vector<int> temp{ 0, 0, 0 };
+	vector<double> temp{ 0, 0, 0 };
 	for (int i = 0; i < 3; i++) // i recorre la matriz en y
 	{
 		for (int j = 0; j < 3; j++)//j recorre la matriz en x 
@@ -30,10 +33,10 @@ void multKcolum(vector<vector<int>> mat, vector<int>&col)
 	return;
 }
 
-void empaquetamela(vector<vector<int>>& p, vector<char> vagina)
+void empaquetamela(vector<vector<double>>& p, vector<char> vagina)
 {
 	int x = 0;
-	vector<int> temp;
+	vector<double> temp;
 	int tam = ceil(vagina.size()/3);
 	for (int i = 0; i <= tam; i++)
 	{
@@ -48,7 +51,7 @@ void empaquetamela(vector<vector<int>>& p, vector<char> vagina)
 			}
 			else
 			{
-				x = 32;
+				x = 0;
 			}
 			
 
@@ -76,8 +79,8 @@ int main()
 	/*
 	c++ tiene una convercion implicata de char a int !! :D
 	*/
-	vector<vector<int>> test = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-	vector<int> test2 = { 1, 2, 3 };
+	vector<vector<double>> test = { { 5, 17, 20 }, { 9, 23, 3 }, { 2, 11, 13 } };
+	vector<double> test2 = { 1, 2, 3 };
 	multKcolum(test, test2);
 	test2;
 
@@ -89,11 +92,31 @@ int main()
 		mila.push_back(var);
 	}
 	mila;
-	vector<vector<int>> pito;
+	vector<vector<double>> pito;
 
 	empaquetamela(pito, mila);
-	pito;
+	//pito;
 
+	/*for each (vector<int> var in pito)
+	{
+		multKcolum(test, var);
+	}*/
+	for (int i = 0; i < pito.size(); i++)
+	{
+		multKcolum(test, pito[i]);
+	}
+	pito; // la multiplicacion para encriptar funge falta modulear
+	//moduleamos
+	for (int i = 0; i < pito.size(); i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			pito[i][j] = ((int)pito[i][j]) % 128;
+		}
+	}
+	pito;
+	vector<vector<double>> inversa = { { 0.5288270, -0.0019881, -0.8131213 }, { -0.2206759, 0.0497018, 0.3280318 }, { 0.1053678, -0.0417495, -0.0755467 } };
+	
 	system("PAUSE");
 	return 0;
 }
