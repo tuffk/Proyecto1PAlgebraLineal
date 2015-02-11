@@ -43,7 +43,7 @@ void Cifrado::dividir()
 		for (int j = 0; j < 3; j++)
 		{
 			if (i >= mensaje.length())
-				temp.push_back(27);
+				temp.push_back(27);//el ultimo vector 3*1 no siempre es exacto y se llena con el mensjae, asi que si queda espacio en blanco l o llenamos con espacios para que no afecte el mensaje
 			else
 				temp.push_back(posicion(mensaje.at(i)));
 
@@ -64,9 +64,9 @@ void Cifrado::cifrar()
 			int temp = 0;
 			for (int k = 0; k < 3; k++)
 			{
-				temp += llave[j][k] * palabras_divididas[i][k];
+				temp += llave[j][k] * palabras_divididas[i][k];//se multiplica la llave por el vector
 			}
-			temporal.push_back(temp%28);
+			temporal.push_back(temp%28); // aqui es la aritmetica modualr
 		}
 		palabras_divididas[i] = temporal;
 	}
@@ -94,7 +94,7 @@ void Cifrado::desencriptar()
 				break;
 			}
 		}
-	}
+	}//sacamos el numero magico para multiplciar la matriz y desencriptar
 	vector<vector<int>> cofito = cofactor(llave);
 	vector<vector<int>>cofactorial = transpuesta(cofito);
 
@@ -120,17 +120,17 @@ void Cifrado::desencriptar()
 			else
 				temporalidad.push_back((cofactorial[i][j] % 28)+28);
 		}
-		inversa.push_back(temporalidad);
+		inversa.push_back(temporalidad);// hacemos la mtriz de cofactores
 	}
 
 	llave = inversa;
-	cifrar();
+	cifrar();//se aplcia el algoritmo de manera inversa
 
 }
 
 vector<vector<int>> Cifrado::cofactor(vector<vector<int>> m)
 {
-
+	//funcion que da la matriz de cofactores
 	if (m.size() != 2)
 	{
 		vector<vector<int>> cofactorial;
@@ -174,7 +174,7 @@ vector<vector<int>> Cifrado::cofactor(vector<vector<int>> m)
 
 int Cifrado::cofactoreo(int cof, vector<vector<int>> m)
 {
-
+	// seria mas bien sacar el determinante de cuando ya es 2*2
 	if (m.size() == 2)
 	{
 		return 1*(m[0][0] * m[1][1] - m[1][0] * m[0][1]);
@@ -221,11 +221,12 @@ int Cifrado::determinante(vector<vector<int>> m)
 	int m3 = m[0][2] * (m[1][0] * m[2][1] - m[2][0] * m[1][1]);
 
 	return m1 - m2 + m3;
+	//devuelve el determinante
 }
 
 vector<vector<int>> Cifrado::transpuesta(vector<vector<int>> m)
 {
-
+	//funcion que transpone la matriz 
 	vector<vector<int>> trans;
 
 	for (int i = 0; i < m.size(); i++)
@@ -252,6 +253,7 @@ vector<vector<int>> Cifrado::transpuesta(vector<vector<int>> m)
 
 int Cifrado::posicion(char p)
 {
+	//para poder convertir el mensjae en numero
 	for (int i = 0; i < abc.size(); i++)
 	{
 		if (abc[i] == p)
